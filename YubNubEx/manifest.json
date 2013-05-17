@@ -2,10 +2,10 @@
 	"manifest_version": 2,
 	
 	"name": "YubNubEx",
-	"description": "Extends YubNub.",
-	"version": "2.0",
+	"description": "Allows for local overrides and multi-tab searching for YubNub",
+	"version": "1.0",
 
-	"omnibox": { "keyword" : "l" },
+	"omnibox": { "keyword" : "y" },
 	"icons": {
 		"16": "img/YubNubExLogo16.png",
 		"48": "img/YubNubExLogo48.png",
