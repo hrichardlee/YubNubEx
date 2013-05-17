@@ -1,0 +1,35 @@
+A very first draft of a Chrome extension that extends YubNub (yubnub.org).
+
+YubNub is a command line for the web. A command like
+
+bim elephants
+
+searches Bing images with the query "elephants", while a command like
+
+wp elephants
+
+searches Wikipedia for "elephants".
+
+NoStone allows commands that open in different tabs. Commands are separated by dots (.) and queries are separated by slashes (/). For example, if the user wants to search Bing images for elephants and Wikipedia for images, he can use the following command:
+
+bim.wp elephants
+
+This will open the Bing image search in one tab and the Wikipedia search in another tab. If the user wants to search Bing images for elephants and giraffes, he can use the command
+
+bim elephants/giraffes
+
+This will open the Bing image search of elephants in one tab and the Bing image search of giraffes in the other. A command like
+
+bim.wp elephants/giraffes
+
+will open four tabs.
+
+Also, the options page for the extension allows users to override the universal YubNub commands.
+
+Finally, commands are cached, so when the YubNub server is slow/down, cached commands will execute quickly!
+
+An AutoHotKey (http://www.autohotkey.com/) script is also included so that you can just press Ctrl+m to start a NoStone search from anywhere in the Chrome browser. (This is a workaround because Chrome hasn't released an API for global keyboard shortcuts yet.)
+
+
+
+

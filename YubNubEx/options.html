@@ -1,0 +1,68 @@
+<html>
+
+<head>
+
+<style type="text/css">
+* {
+	font-family: Segoe UI, Segoe, Verdana;
+}
+
+body {
+	margin: 3em;
+}
+
+h2 {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	font-family: Segoe UI Light, Segoe, Verdana;
+}
+
+input#newOverrideCommand {
+	width: 6em;
+}
+input#newOverrideUrl {
+	width: 40em;
+}
+
+th {
+	text-align: left;
+	font-weight: normal;
+}
+
+td {
+	padding-right: 0.5em;
+}
+
+</style>
+
+</head>
+
+<body>
+	<img src="img/YubNubExFullLogo.png" />
+
+	<h2>Local saved commands</h2>
+	
+	<table>
+		<thead>
+			<tr><th>Alias</th><th>Command</th><th></th></tr>
+		</thead>
+		<tbody id="savedOverrides">
+		</tbody>
+		<tfoot>
+			<tr>
+				<td><input id="newOverrideCommand" type="text" /></td>
+				<td><input id="newOverrideUrl" type="text" /></td>
+				<td><button id="saveButton">Add New</button></td>
+			</tr>
+		</tfoot>
+	</table>
+	
+<h2>Reset</h2>
+	<div>
+		<button id="clearOverridesButton">Clear all commands</button>
+	</div>
+</body>
+
+<script src="js/options.js"></script>
+
+</html>

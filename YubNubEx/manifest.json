@@ -1,0 +1,23 @@
+{
+	"manifest_version": 2,
+	
+	"name": "YubNubEx",
+	"description": "Extends YubNub.",
+	"version": "2.0",
+
+	"omnibox": { "keyword" : "l" },
+	"icons": {
+		"16": "img/YubNubExLogo16.png",
+		"48": "img/YubNubExLogo48.png",
+		"128": "img/YubNubExLogo128.png"
+	},
+	"permissions": [
+		"tabs",
+		"http://yubnub.org/"
+	],
+	"options_page" : "options.html",
+	
+	"background": {
+		"scripts": ["js/main.js", "js/registerOmnibox.js"]
+	}
+}

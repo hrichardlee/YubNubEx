@@ -1,0 +1,6 @@
+#binary file for chrome extensions
+*.crx
+#private key
+*.pem
+
+bin
