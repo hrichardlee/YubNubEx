@@ -1,0 +1,29 @@
+* {
+	font-family: Segoe UI, Segoe, Verdana;
+}
+
+body {
+	margin: 3em;
+}
+
+h2 {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	font-family: Segoe UI Light, Segoe, Verdana;
+}
+
+input#newOverrideCommand {
+	width: 6em;
+}
+input#newOverrideUrl {
+	width: 40em;
+}
+
+th {
+	text-align: left;
+	font-weight: normal;
+}
+
+td {
+	padding-right: 0.5em;
+}
