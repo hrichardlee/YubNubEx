@@ -36,19 +36,22 @@
 	}
 	
 	function combine(url, param, alreadyEscaped) {
-		if (!url) return chrome.extension.getURL('badCommand.html');
+		if (!url) return chrome.extension.getURL('badCommand.html#unknownerror');
 		if (!param) param = "";
 		return url.replace('%s', alreadyEscaped ? param : escape(param));
 	}
 
 	function getExternalCommand(command) {
-		var data = $.ajax({
+		var xhr = $.ajax({
 			url: 'http://yubnub.org/kernel/man?args=' + command,
 			async: false
-		}).responseText;
+		});
+		
+		if (xhr.status === 0) return chrome.extension.getURL('badCommand.html#nointernet');
+		if (xhr.status !== 200) return chrome.extension.getURL('badCommand.html#unknownerror');
 		
 		var el = $("<div></div>");
-		el.html(data);
+		el.html(xhr.responseText);
 		var commandString = $("span.muted", el).first().text();
 		if (commandString) {
 			storedCommands.create({
@@ -58,7 +61,7 @@
 			
 			return commandString;
 		} else {
-			//TODO command could not be parsed. or yubnub could not be reached breaking change?
+			return chrome.extension.getURL('badCommand.html#unknowncommand');
 		}
 	}
 
