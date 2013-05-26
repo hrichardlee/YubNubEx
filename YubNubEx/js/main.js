@@ -40,32 +40,24 @@
 	}
 
 	function getExternalCommand(command) {
-		//do it synchronously for now. oh well
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET',
-			'http://yubnub.org/kernel/man?args=' + command,
-			false);
-		xhr.send();
+		var data = $.ajax({
+			url: 'http://yubnub.org/kernel/man?args=' + command,
+			async: false
+		}).responseText;
 		
-		if (xhr.status == 200) {
-			var i = xhr.responseText.indexOf('<span class="muted">');
-			if (i != -1) {
-				var temp = xhr.responseText.substring(i + 20);
-				i = temp.indexOf('</span>');
-				if (i != -1) {
-					commandString = temp.substring(0, i);
-					//save commandString
-					storedCommands.create({
-						trigger: command,
-						exec: commandString
-						},
-						{merge: true});
-					
-					return commandString;
-				}
-			}
+		var el = $("<div></div>");
+		el.html(data);
+		var commandString = $("span.muted", el).first().text();
+		if (commandString) {
+			storedCommands.create({
+				trigger: command,
+				exec: commandString},
+				{merge: true});
+			
+			return commandString;
+		} else {
+			//TODO command could not be parsed. or yubnub could not be reached breaking change?
 		}
-		//what if it fails?
 	}
 
 	function executeCommand(text) {
