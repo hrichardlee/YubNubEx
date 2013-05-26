@@ -6,24 +6,28 @@
 
 	// returns a list of urls
 	function resolveCommand(command, param) {
-		if (command == "") return ["about:blank"]; // if the command is blank, it's going to be blank ("" signifies open a blank tab)
+		if (!command) return ["about:blank"]; // if the command is blank, it's going to be blank ("" signifies open a blank tab)
 		
+		//todo make this more efficient?
 		storedCommands.fetch();
 		var storedCommand = storedCommands.get(command);
 		if (!storedCommand)
 			return [combine(getExternalCommand(command), param)]; // if we don't have the command, go get it from yubnub
 		var commandString = storedCommand.get("exec");
 		
-		//if it's in the internal storage, it could be any number of things
-		if (/\w+:\/\//.test(commandString)) { // if it's a protocol
+		//if it's in the internal storage, it could be any number of things:
+		if (/\w+:\/\//.test(commandString)) {
+			// if it's a protocol		
 			return [combine(commandString, param)];
-		} else if (commandString.indexOf(" ") == -1) {	// if there are no spaces, it's a conglomerate command
+		} else if (commandString.indexOf(" ") == -1) {
+			// if there are no spaces, it's a conglomerate command
 			return commandString.split(commandSplitChar).map(function(subcommand) {
 				return resolveCommand(subcommand, param);
 			}).reduce(function(prev, current) {
 				return prev.concat(current);
 			}, []);
-		} else {	// if there is a space, it includes a parameter transformation
+		} else {
+			// if there is a space, it includes a parameter transformation
 			var split = commandString.indexOf(" ");
 			subcommands = commandString.substring(0, split);
 			paramTransform = commandString.substring(split + 1);
@@ -32,9 +36,9 @@
 	}
 	
 	function combine(url, param, alreadyEscaped) {
-		if (url == null) return chrome.extension.getURL('badCommand.html');
-		if (param == null) param = "";
-		return url.replace('%s', alreadyEscaped ? param : escape(param)); //not sure if we should be doing the escaping here
+		if (!url) return chrome.extension.getURL('badCommand.html');
+		if (!param) param = "";
+		return url.replace('%s', alreadyEscaped ? param : escape(param));
 	}
 
 	function getExternalCommand(command) {
