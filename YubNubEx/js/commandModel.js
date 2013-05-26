@@ -5,7 +5,7 @@
 		
 	var CommandList = Backbone.Collection.extend({
 		model: Command,
-		localStorage: new Backbone.LocalStorage("YubNubEx-commands"),
+		chromeStorage: new Backbone.ChromeStorage("YubNubEx-commands", "sync"),
 		comparator: function(m){
 			return m.get("trigger");
 		}
