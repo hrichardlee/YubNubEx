@@ -3,12 +3,12 @@
 	var paramSplitChar = '`';
 	
 	var storedCommands = new yubnubex.CommandList();
-	storedCommands.fetch();
 
 	// returns a list of urls
 	function resolveCommand(command, param) {
 		if (command == "") return ["about:blank"]; // if the command is blank, it's going to be blank ("" signifies open a blank tab)
 		
+		storedCommands.fetch();
 		var storedCommand = storedCommands.get(command);
 		if (!storedCommand)
 			return [combine(getExternalCommand(command), param)]; // if we don't have the command, go get it from yubnub
