@@ -15,8 +15,9 @@
 		var commandString = storedCommand.get("exec");
 		
 		//if it's in the internal storage, it could be any number of things
-		if (commandString.substr(0, 7) == 'http://' ||
-			commandString.substr(0, 8) == 'https://') { // if it's a straight url, we're done
+		var testa = document.createElement("a");
+		testa.href=commandString;
+		if (testa.protocol != ":") { // if it's a straight url, we're done
 			return [combine(commandString, param)];
 		} else if (commandString.indexOf(" ") == -1) {	// if there are no spaces, it's a conglomerate command
 			return commandString.split(commandSplitChar).map(function(subcommand) {
