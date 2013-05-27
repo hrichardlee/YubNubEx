@@ -1,35 +1,59 @@
-A very first draft of a Chrome extension that extends YubNub (yubnub.org).
+## YubNubEx
 
-YubNub is a command line for the web. A command like
+YubNubEx is a Chrome extension that extends YubNub (yubnub.org). It is activated in the Omnibox by its keyword, "y".
 
-bim elephants
 
-searches Bing images with the query "elephants", while a command like
+### YubNub
 
-wp elephants
+YubNub is a command line for the web. For example,
+
+    bim elephants
+
+searches Bing images with the query "elephants".
+
+    wp elephants
 
 searches Wikipedia for "elephants".
 
-NoStone allows commands that open in different tabs. Commands are separated by dots (.) and queries are separated by slashes (/). For example, if the user wants to search Bing images for elephants and Wikipedia for images, he can use the following command:
+These commands are defined by YubNub users. Normal YubNub commands work with YubNubEx, and are cached locally.
 
-bim.wp elephants
 
-This will open the Bing image search in one tab and the Wikipedia search in another tab. If the user wants to search Bing images for elephants and giraffes, he can use the command
+### YubNubEx Tabbing
 
-bim elephants/giraffes
+YubNubEx allows commands that open in different tabs. Commands are separated by dots (.) and queries are separated by backticks (`). For example:
 
-This will open the Bing image search of elephants in one tab and the Bing image search of giraffes in the other. A command like
+    bim.wp elephants
 
-bim.wp elephants/giraffes
+searches Bing images for elephants and Wikipedia for elephants in two tabs.
+
+    bim elephants`giraffes
+
+searches Bing images for elephants and giraffes in two tabs.
+
+    bim.wp elephants/giraffes
 
 will open four tabs.
 
-Also, the options page for the extension allows users to override the universal YubNub commands.
 
-Finally, commands are cached, so when the YubNub server is slow/down, cached commands will execute quickly!
+### YubNubEx Overrides
 
-An AutoHotKey (http://www.autohotkey.com/) script is also included so that you can just press Ctrl+m to start a NoStone search from anywhere in the Chrome browser. (This is a workaround because Chrome hasn't released an API for global keyboard shortcuts yet.)
+YubNubEx options page for the extension allows users to override the global YubNub commands.
 
+The following types of overrides are permitted:
 
+A normal YubNub command
 
+    bim | http://bim.com/?q=%s
 
+A command expansion (command alias)
+
+    s | b.g
+
+A parameter transformation
+
+    gso | g site:stackoverflow.com %s
+   
+   
+### Known Issues
+
+Parameterized arguments are not currently supported
