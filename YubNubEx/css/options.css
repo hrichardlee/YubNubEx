@@ -12,18 +12,33 @@ h2 {
 	font-family: Segoe UI Light, Segoe, Verdana;
 }
 
-input#newOverrideCommand {
+input#new-cmd-trigger {
 	width: 6em;
 }
-input#newOverrideUrl {
-	width: 40em;
+input#new-cmd-exec {
+	width: 100%;
+}
+
+table {
+	border-collapse: collapse;
 }
 
 th {
 	text-align: left;
-	font-weight: normal;
+	border-bottom: black solid 1px;
+}
+
+thead:after {
+    line-height:0.25em;
+    content:"-";
+    color:white; /* to hide text */
+    display:block;
 }
 
 td {
 	padding-right: 0.5em;
+}
+
+td.cmd-exec{
+	width: 35em;
 }

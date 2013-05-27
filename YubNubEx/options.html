@@ -14,12 +14,13 @@
 			<thead>
 				<tr><th>Alias</th><th>Command</th><th></th></tr>
 			</thead>
+
 			<tbody id="commands-table">
 			</tbody>
 			<tbody>
 				<tr>
 					<td><input id="new-cmd-trigger" type="text" /></td>
-					<td><input id="new-cmd-exec" type="text" /></td>
+					<td class="cmd-exec"><input id="new-cmd-exec" type="text" /></td>
 					<td><button id="save-new-cmd">Add New</button></td>
 				</tr>
 			</tbody>
@@ -32,7 +33,7 @@
 
 <script type="text/template" id="command-template">
 	<td><%- trigger %></td>
-	<td><%- exec %></td>
+	<td class="cmd-exec"><%- exec %></td>
 	<td><button class="remove-cmd">Remove</button></td>
 </script>
 <script src="js/jslib/jquery-1.9.1.js"></script>
