@@ -2,14 +2,14 @@
 	"manifest_version": 2,
 	
 	"name": "YubNubEx",
-	"description": "Allows for local overrides and multi-tab searching for YubNub",
+	"description": "Extends YubNub to allow multi-tab searching and local overrides",
 	"version": "1.0",
 
 	"omnibox": { "keyword" : "y" },
 	"icons": {
-		"16": "img/YubNubExLogo16.png",
-		"48": "img/YubNubExLogo48.png",
-		"128": "img/YubNubExLogo128.png"
+		"16": "img/yubnubex16.png",
+		"48": "img/yubnubex48.png",
+		"128": "img/yubnubex128.png"
 	},
 	"permissions": [
 		"tabs",
