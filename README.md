@@ -1,6 +1,6 @@
 ## YubNubEx
 
-YubNubEx is a Chrome extension that extends YubNub (yubnub.org). It is activated in the Omnibox by its keyword, "y".
+YubNubEx is a Chrome extension that extends YubNub (yubnub.org). It is activated in the Omnibox by its keyword, "y". It is published on the Chrome Web Store [here](https://chrome.google.com/webstore/detail/yubnubex/nicbdnpoplkppcjbbidaikbalaelmcac?hl=en&gl=US)
 
 
 ### YubNub
@@ -20,7 +20,7 @@ These commands are defined by YubNub users. Normal YubNub commands work with Yub
 
 ### YubNubEx Tabbing
 
-YubNubEx allows commands that open in different tabs. Commands are separated by dots (.) and queries are separated by backticks (`). For example:
+YubNubEx lets you open command/query combinations in different tabs. Commands are separated by dots (.) and queries are separated by backticks (`). For example:
 
     bim.wp elephants
 
@@ -37,7 +37,7 @@ will open four tabs.
 
 ### YubNubEx Overrides
 
-YubNubEx options page for the extension allows users to override the global YubNub commands.
+The options page for the extension allows you to override the global YubNub commands.
 
 The following types of overrides are permitted:
 
