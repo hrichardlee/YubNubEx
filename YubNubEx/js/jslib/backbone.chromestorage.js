@@ -198,6 +198,12 @@
         , resolveModels = modelsDfd.resolve.bind(modelsDfd)
       ;
 
+    this.loaded = this.store.get(this.name).
+      pipe(this._parseRecords).
+      done((function(records) {
+        this.records = records;
+      }).bind(this));
+
       // Waits until the model IDs have been initially
       // populated, and then queries the storage for
       // the actual records.
