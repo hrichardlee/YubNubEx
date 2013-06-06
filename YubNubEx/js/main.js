@@ -21,11 +21,12 @@
 				return [combine(commandString, param)];
 			} else if (commandString.indexOf(" ") == -1) {
 				// if there are no spaces, it's a conglomerate command
-				return commandString.split(commandSplitChar).map(function(subcommand) {
-					return resolveCommand(subcommand, param);
-				}).reduce(function(prev, current) {
-					return prev.concat(current);
-				}, []);
+				return $.when.apply($, 
+					commandString.split(commandSplitChar).map(function(subcommand) {
+						return resolveCommand(subcommand, param);
+					})).then(function () {
+						return Array.prototype.concat.apply([], arguments);
+					});
 			} else {
 				// if there is a space, it includes a parameter transformation
 				var split = commandString.indexOf(" ");
