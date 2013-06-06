@@ -3,7 +3,7 @@
 	
 	"name": "YubNubEx",
 	"description": "Extends YubNub to allow multi-tab searching and local overrides",
-	"version": "1.1",
+	"version": "1.2",
 
 	"omnibox": { "keyword" : "y" },
 	"icons": {
