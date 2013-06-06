@@ -12,7 +12,10 @@
 		return storedCommands.fetch().then(function(newStoredCommands) {			
 			var storedCommand = storedCommands.get(command);
 			if (!storedCommand)
-				return [combine(getExternalCommand(command), param)]; // if we don't have the command, go get it from yubnub
+				// if we don't have the command, go get it from yubnub
+				return getExternalCommand(command).then(function(url) {
+					return [combine(url, param)];
+				});
 			var commandString = storedCommand.get("exec");
 			
 			//if it's in the internal storage, it could be any number of things:
@@ -44,28 +47,27 @@
 	}
 
 	function getExternalCommand(command) {
-		var xhr = $.ajax({
-			url: 'http://yubnub.org/kernel/man?args=' + command,
-			async: false
-		});
-		
-		if (xhr.status === 0) return chrome.extension.getURL('badCommand.html#nointernet');
-		if (xhr.status !== 200) return chrome.extension.getURL('badCommand.html#unknownerror');
-		
-		var el = $("<div></div>");
-		el.html(xhr.responseText);
-		var commandString = $("span.muted", el).first().text();
-		if (commandString) {
-			var storedCommands = new yubnubex.CommandList();
-			storedCommands.create({
-				trigger: command,
-				exec: commandString},
-				{merge: true});
-			
-			return commandString;
-		} else {
-			return chrome.extension.getURL('badCommand.html#unknowncommand');
-		}
+		return $.ajax('http://yubnub.org/kernel/man?args=' + command).then(
+			function (responseText) {
+				var el = $("<div></div>");
+				el.html(responseText);
+				var commandString = $("span.muted", el).first().text();
+				if (commandString) {
+					var storedCommands = new yubnubex.CommandList();
+					storedCommands.create({
+						trigger: command,
+						exec: commandString},
+						{merge: true});
+					
+					return commandString;
+				} else {
+					return chrome.extension.getURL('badCommand.html#unknowncommand');
+				}
+			},
+			function (xhr) {
+				if (xhr.status === 0) return chrome.extension.getURL('badCommand.html#nointernet');
+				if (xhr.status !== 200) return chrome.extension.getURL('badCommand.html#unknownerror');					
+			});		
 	}
 
 	function executeCommand(text) {
