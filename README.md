@@ -1,6 +1,6 @@
 ## YubNubEx
 
-YubNubEx is a Chrome extension that extends YubNub (yubnub.org). It is activated in the Omnibox by its keyword, "y". It is published on the Chrome Web Store [here](https://chrome.google.com/webstore/detail/yubnubex/nicbdnpoplkppcjbbidaikbalaelmcac?hl=en&gl=US)
+YubNubEx is a Chrome extension that extends YubNub (yubnub.org). It is activated in the Omnibox by its keyword, "y". It is published on the Chrome Web Store [here](https://chrome.google.com/webstore/detail/yubnubex/nicbdnpoplkppcjbbidaikbalaelmcac?hl=en&gl=US).
 
 
 ### YubNub
@@ -56,4 +56,4 @@ A parameter transformation
    
 ### Known Issues
 
-Parameterized arguments are not currently supported
+Parameterized arguments are not currently supported.
